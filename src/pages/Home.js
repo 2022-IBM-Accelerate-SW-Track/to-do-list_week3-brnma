@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Todos from "../component/todos";
-import AddTodo from "../component/AddTodo";
-import "../pages/Home.css";
+import React, { Component } from 'react';
+import Todos from '../component/todos';
+import AddTodo from '../component/AddTodo';
+import '../pages/Home.css';
 
 class Home extends Component {
   // Create a default state of this component with an empty list of todos.
@@ -28,8 +28,10 @@ class Home extends Component {
   // the addTodo function simply creates a new array that includes the user submitted todo item and then
   // updates the state with the new list.
   addTodo = (todo) => {
-    const exists = this.state.todos.find(t => t.content === todo.content);
-    if (exists){ return }
+    const exists = this.state.todos.find((t) => t.content === todo.content);
+    if (exists) {
+      return;
+    }
     // In React, keys or ids in a list help identify which items have changed, been added or removed. Keys
     // should not share duplicate values.
     // To avoid having dup values, we use the Math.random() function to generate a random value for a todo id.
