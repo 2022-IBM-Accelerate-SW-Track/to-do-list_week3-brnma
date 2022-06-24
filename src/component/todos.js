@@ -18,12 +18,11 @@ import {
 const Todos = ({ todos, deleteTodo }) => {
   const todoList = todos.length ? (
     todos.map((todo) => {
-      const date = new Date();
       const due = new Date(todo.due);
-      let color = date >= due ? '#ffffffff' : '#ffcccb ';
+      let color = new Date() < due ? '#ffffffff' : '#ffcccb ';
       return (
         <Grid key={todo.id}>
-          <Card style={{ marginTop: 10, backgroundColor: `${color}` }}>
+          <Card style={{ marginTop: 10, background: `${color}` }}>
             {/* Remember, we set the local state of this todo item when the user submits the form in 
             AddTodo.js. All we need to do is return the todo list item {todo.content} as well as its 
             current date/time {todo.date}. Also, the item's id is utilized in order to correctly delete an item from the Todo list*/}
@@ -33,7 +32,7 @@ const Todos = ({ todos, deleteTodo }) => {
                 color="primary"
                 onClick={() => deleteTodo(todo.id)}
               />
-              <ListItemText primary={todo.content} secondary={todo.date} />
+              <ListItemText primary={todo.content} secondary={todo.due} />
             </ListItemButton>
           </Card>
         </Grid>
